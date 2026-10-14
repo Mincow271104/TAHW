@@ -2754,7 +2754,7 @@
       <div class="footer-inner">
         <div class="footer-left">
           <span style="font-weight: 600; color: var(--text-primary);">FocusForge — Gamified Study Planner</span>
-          <span>Designed for calm, distraction-free academic focus. All user data is securely stored locally in your browser.</span>
+          <span>Designed for calm, distraction-free academic focus. Your study tasks and progress are stored locally in this browser.</span>
         </div>
         <div class="footer-right">
           <button type="button" class="btn btn-secondary" id="btn-load-sample" style="font-size: 0.75rem; padding: 6px 12px;">
@@ -3504,7 +3504,7 @@ Please begin by introducing the core concept and initiating the first step.`;
 
       async function discoverModelsFromKey(apiKey) {
         try {
-          const listUrl = `https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`;
+          const listUrl = 'https://generativelanguage.googleapis.com/v1beta/models';
           const res = await fetch(listUrl, {
             method: 'GET',
             headers: {
@@ -3628,7 +3628,7 @@ Please begin by introducing the core concept and initiating the first step.`;
 
           // Try up to 4 eligible models in case one experiences temporary traffic spikes
           for (const modelCandidate of candidatesToTest.slice(0, 4)) {
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelCandidate}:generateContent?key=${encodeURIComponent(apiKey)}`;
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelCandidate}:generateContent`;
             try {
               const response = await fetch(url, {
                 method: 'POST',
@@ -3693,7 +3693,7 @@ Please begin by introducing the core concept and initiating the first step.`;
       }
 
       async function generatePromptWithGemini(topic, goal, style, difficulty, extraNotes, apiKey) {
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${currentGeminiModel}:generateContent?key=${encodeURIComponent(apiKey)}`;
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${currentGeminiModel}:generateContent`;
 
         const systemPrompt = "You are an expert educational prompt engineer. Your task is to create a clear, detailed, copy-ready prompt that a learner can paste into an AI tutor. Do not answer the subject question itself. Instead, write the best possible instructions for another AI to act as a patient, effective tutor. Incorporate the learner's topic, goal, difficulty level, teaching style, and additional instructions. Include appropriate tutoring behavior, a useful response structure, practice or comprehension checks when relevant, and guidance for explaining mistakes. Write the generated prompt in clear English. Return only the finished prompt, without introductory commentary or an explanation of your own process.";
 
